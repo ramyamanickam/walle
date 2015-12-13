@@ -1,7 +1,6 @@
 import os
 import pickle
 
-from com.walle.lib.mpsyoutube.pafy import pafy
 
 from . import g, c, streams
 from .util import dbg

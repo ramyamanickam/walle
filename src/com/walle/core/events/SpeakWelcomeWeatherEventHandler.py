@@ -8,5 +8,5 @@ class SpeakWelcomeWeatherEventHandler(EventHandler):
 
     def process(self, event):
         weather_data = weather.welcome_weather('Edinburgh')  
-        speak_event = SpeakEvent("It is " + weather_data.get('status') + "today")
+        speak_event = SpeakEvent("It is " + weather_data.get('status') + " day today")
         self.eventQueue.put(speak_event)

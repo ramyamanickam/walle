@@ -1,4 +1,5 @@
 from com.walle.core.input.CommandLineInput import CommandLineInput
+from com.walle.core.input.PersonSensorInput import PersonSensorInput
 from com.walle.core.events.EventQueue import EventQueue
 from com.walle.core.events.EventProcessor import EventProcessor
 from com.walle.core.output.CommandLineOutput import CommandLineOutput
@@ -10,8 +11,11 @@ import logging
 queue  = EventQueue();
 logging.basicConfig(level=logging.DEBUG)
 
-commandLineput = CommandLineInput(queue);    
-commandLineput.start();
+#commandLineput = CommandLineInput(queue);    
+#commandLineput.start();
+
+person_sensor_input = PersonSensorInput(queue);
+person_sensor_input.start();
 
 commandLineOutput = CommandLineOutput(queue);
 speakerOutput = SpeakerOutput(queue);
