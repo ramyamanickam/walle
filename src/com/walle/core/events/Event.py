@@ -31,3 +31,9 @@ class SpeakEvent( Event ):
     def getSpeakText(self):
         return self.speakText;
 
+class SpeakWelcomeWeatherEvent:
+    pass;
+
+class MotionSensedEvent:
+    pass;
+        

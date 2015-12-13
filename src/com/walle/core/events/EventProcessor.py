@@ -4,8 +4,13 @@ from com.walle.core.events.SpeakEventHandler import SpeakEventHandler
 from com.walle.core.events.Event import SpeakEvent
 from com.walle.core.events.Event import CreateReminderEvent
 from com.walle.core.events.Event import CreateRemindingEvent
+from com.walle.core.events.Event import MotionSensedEvent
+from com.walle.core.events.Event import SpeakWelcomeWeatherEvent
 from com.walle.core.events.ReminderEventHandler import ReminderEventHandler
 from com.walle.core.events.RemindingEventHandler import RemindingEventHandler
+from com.walle.core.events.MotionSensedEventHandler import MotionSensedEventHandler
+from com.walle.core.events.SpeakWelcomeWeatherEventHandler import SpeakWelcomeWeatherEventHandler
+
 
 class EventProcessor:
     def __init__(self, eventQueue, commandLineOutput, speakOutput):
@@ -16,6 +21,8 @@ class EventProcessor:
         self.speakEventHandler = SpeakEventHandler();
         self.reminderEventHandler = ReminderEventHandler(self.eventQueue);
         self.remindingEventHandler = RemindingEventHandler(self.speakOutput, self.commandLineOutput);
+        self.motionSensedEventHandler = MotionSensedEventHandler(self.eventQueue);
+        self.speakWelcomeWeatherEventHandler = SpeakWelcomeWeatherEventHandler(self.eventQueue);
       
     def process(self):
         if(self.eventQueue.qsize() > 0):
@@ -32,4 +39,10 @@ class EventProcessor:
                 if isinstance(event, CreateRemindingEvent):
                     logging.debug("Processing Create Reminding Event");
                     self.remindingEventHandler.process(event);    
+                if isinstance(event, MotionSensedEvent):
+                    logging.debug("Processing Create Motion Sensed Event");
+                    self.motionSensedEventHandler.process(event);    
+                if isinstance(event, SpeakWelcomeWeatherEvent):
+                    logging.debug("Processing Speak Welcome Weather Event");
+                    self.speakWelcomeWeatherEventHandler.process(event);    
                     
