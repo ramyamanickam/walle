@@ -54,7 +54,7 @@ from urllib2 import urlopen, build_opener
 from urllib2 import HTTPError, URLError
 from urllib import urlencode
 
-from com.walle.lib.mpsyoutube.pafy import pafy
+from pafy import pafy
 
 from . import terminalsize, g, c, cache, streams
 from .playlist import Playlist, Video

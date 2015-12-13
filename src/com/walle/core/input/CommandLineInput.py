@@ -1,6 +1,7 @@
 import threading
 import logging
 from com.walle.core.events.Event import CreateReminderEvent
+from com.walle.core.events.Event import MotionSensedEvent
 
 class CommandLineInput(threading.Thread):
 	def __init__(self, eventQueue):
@@ -22,6 +23,10 @@ class CommandLineInput(threading.Thread):
 				exitCommand = True;
 				continue
 		
+			if(text.lower() == "motion"):
+				self.eventQueue.put(MotionSensedEvent())
+				continue;
+			
 			logging.info("Unknown Command")
 		logging.info("Exiting command line input" );	
 			
