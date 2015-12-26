@@ -12,7 +12,5 @@ class MoveReverseEventHandler(EventHandler):
             logging.info("Intialising the Movement");
             movement.init();
 	movement.move_reverse();
-	logging.info("Stopping the movement");
-	movement.stop();	
-	movement.exit();
-        logging.info("Exiting the movement");
+	
+        

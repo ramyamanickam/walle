@@ -16,7 +16,8 @@ def init():
     		print 'could not open Laika device. Exiting...'
     		sys.exit()
 	ret = exp.dout_all(lk.MODULE_ONE, lk.OFF, ack)
-	initialised=True
+        global initialised
+        initialised=True
 	print("Motor Speed 1:", adc_convert_1)
 	print("Motor Speed 2:", adc_convert_2)
 

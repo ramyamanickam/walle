@@ -8,8 +8,10 @@ from com.walle.core.events.Event import MotionSensedEvent
 from com.walle.core.events.Event import SpeakWelcomeWeatherEvent
 from com.walle.core.events.Event import MoveForwardEvent
 from com.walle.core.events.Event import MoveReverseEvent
+from com.walle.core.events.Event import MoveStopEvent
 from com.walle.core.events.MoveForwardEventHandler import MoveForwardEventHandler
 from com.walle.core.events.MoveReverseEventHandler import MoveReverseEventHandler
+from com.walle.core.events.MoveStopEventHandler import MoveStopEventHandler
 from com.walle.core.events.ReminderEventHandler import ReminderEventHandler
 from com.walle.core.events.RemindingEventHandler import RemindingEventHandler
 from com.walle.core.events.MotionSensedEventHandler import MotionSensedEventHandler
@@ -29,6 +31,7 @@ class EventProcessor:
         self.speakWelcomeWeatherEventHandler = SpeakWelcomeWeatherEventHandler(self.eventQueue);
 	self.moveForwardEventHandler = MoveForwardEventHandler(self.eventQueue);
 	self.moveReverseEventHandler = MoveReverseEventHandler(self.eventQueue);
+        self.moveStopEventHandler = MoveStopEventHandler(self.eventQueue);
       
     def process(self):
         if(self.eventQueue.qsize() > 0):
@@ -57,4 +60,6 @@ class EventProcessor:
 		if isinstance(event, MoveReverseEvent):
                     logging.debug("Processing Move Reverse Event");
                     self.moveReverseEventHandler.process(event);  
-                    
+                if isinstance(event, MoveStopEvent):
+                    logging.debug("Processing Move Stop Event");
+                    self.moveStopEventHandler.process(event);

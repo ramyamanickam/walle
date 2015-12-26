@@ -12,7 +12,7 @@ class MoveForwardEventHandler(EventHandler):
 		logging.info("Initialising the movement");
 		movement.init();
 	movement.move_forward();	
-	movement.stop();
-	logging.info("Stopped the movement");	
-	movement.exit();
-	logging.info("Exited the movement");
+	
+		
+	
+    

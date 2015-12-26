@@ -7,11 +7,8 @@ class MoveStopEventHandler(EventHandler):
         self.eventQueue = eventQueue
     
     def process(self, event):
-        is_init=movement.is_initialised()
-	if(is_init == True ):
-            movement.stop();
-        else:
-            logging.info("Movement is not initialised");
         
+        logging.info("Stopping the Movement");
+	movement.stop();
 	
         
