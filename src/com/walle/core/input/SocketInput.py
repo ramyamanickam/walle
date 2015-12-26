@@ -3,7 +3,7 @@ import threading
 import logging
 import time
 from com.walle.core.input.xmlparser.MessageParser import MessageParser
-
+from com.walle.movement import movement
 class SocketInput(threading.Thread):
 
     def __init__(self, messageParser):
@@ -50,4 +50,5 @@ class SocketInputThread(threading.Thread):
                 ext=True                                                             
             self.mp.process(message);
         self.si.close();
+        movement.exit();
         logging.info("Exiting the Socket Thread");   

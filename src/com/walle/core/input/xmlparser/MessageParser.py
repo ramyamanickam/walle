@@ -1,6 +1,6 @@
 import logging
 import xml.etree.ElementTree as ET
-from com.walle.core.events.Event import MoveForwardEvent
+from com.walle.core.events.Event import MoveForwardEvent, MoveStopEvent
 from com.walle.core.events.Event import MoveReverseEvent
 
 class MessageParser:
@@ -9,11 +9,19 @@ class MessageParser:
 
     def process(self, message):
         doc = ET.fromstring(message);
-        command=doc.text;
-        logging.info("Received the command through socket" + str(command));
+    
+        logging.info("Received the command through socket " + str(doc));
+        command = doc.find('name').text;
+        logging.info("Received the command through socket " + str(command));
         if(command == "MF"):
-            logging.info("Creating Move Forward Event");
+            duration = doc.find('duration').text;
+            logging.info("Received the duration through socket " + str(duration));            
+            
             self.queue.put(MoveForwardEvent());
+        
+            self.queue.putTimer(MoveStopEvent(),duration);
+            logging.info("Creating Move Forward Event for duration " + str(duration));
+        
 	if(command == "MB"):
             logging.info("Creating Move Backward Event");
             self.queue.put(MoveReverseEvent());

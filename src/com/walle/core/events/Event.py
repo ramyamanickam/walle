@@ -41,4 +41,7 @@ class MoveForwardEvent:
     pass;
 
 class MoveReverseEvent:
-    pass;        
+    pass
+
+class MoveStopEvent:
+    pass
