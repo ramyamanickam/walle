@@ -36,4 +36,9 @@ class SpeakWelcomeWeatherEvent:
 
 class MotionSensedEvent:
     pass;
-        
+
+class MoveForwardEvent:
+    pass;
+
+class MoveReverseEvent:
+    pass;        
